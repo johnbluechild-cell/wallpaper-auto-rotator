@@ -34,14 +34,15 @@ wallpaper-auto-rotator/
 
 ### 1. 安装 DSH 持久化插件
 
-1. 找到你的 DSH profile 目录（通常为 `%DSH_HOME%\profiles\<profile>\`，例如
-   `C:\Users\<你>\.dsh\profiles\desktop\`）。
-2. 把 `dsh-plugin/` 目录复制为 `…\profiles\<profile>\node_modules\wallpaper-rotator\`。
-3. 在该 profile 的 `cordis.yml` 中新增一行（若文件内容为 `[]`，替换为）：
+1. 找到 DSH 的 hoisted node_modules 目录（与 `dsh-plugin-desktop` 同处，通常在
+   `%DSH_HOME%\profiles\node_modules\`）。
+2. 把 `dsh-plugin/` 目录复制为 `%DSH_HOME%\profiles\node_modules\wallpaper-rotator\`。
+3. 在该 profile 的 `cordis.patch.yml`（注意是 patch，不是 cordis.yml——后者会被 DSH 启动重置）里追加：
 
    ```yaml
-   - id: wallpaper-rotator
-     name: wallpaper-rotator
+   - insert:
+       - id: wallpaper-rotator
+         name: wallpaper-rotator
    ```
 
 4. 重启 DSH。
@@ -52,9 +53,14 @@ wallpaper-auto-rotator/
 ### 2. 安装桌面宠物
 
 1. 把 `desktop-pet/wallpaper-pet.ps1` 放到 `%DSH_HOME%\` 下。
-2. 双击运行（或：`powershell.exe -WindowStyle Hidden -File …\wallpaper-pet.ps1`）。
-3. 开机自启：把 `desktop-pet/wallpaper-pet.vbs` 放入
-   `%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\`。
+2. 用「计划任务」运行，使其独立于 DSH（这样重启 DSH 也不会关掉小猫）：
+
+   ```powershell
+   schtasks /Create /F /TN wallpaper-pet /SC ONLOGON /TR "powershell.exe -NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -File %DSH_HOME%\wallpaper-pet.ps1"
+   schtasks /Run /TN wallpaper-pet
+   ```
+
+   备选：把 `desktop-pet/wallpaper-pet.vbs` 放入 `%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\`（登录时启动）。
 
 ### 3. 配置文件
 
