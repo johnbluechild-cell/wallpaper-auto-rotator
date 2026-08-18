@@ -1,6 +1,6 @@
 import { readFileSync, existsSync } from 'node:fs'
 
-const SETTINGS_PATH = (process.env.DSH_HOME || 'C:\\Users\\Administrator\\.dsh') + '\\wallpaper-settings.json'
+const SETTINGS_PATH = 'C:\\Users\\Administrator\\.dsh\\wallpaper-settings.json'
 const DEFAULTS = { opacity: 0.28, intervalSec: 180, disabled: [], nextTick: 0 }
 
 const WORKSHOP = 'E:\\steam\\steamapps\\workshop\\content\\431960'
@@ -103,7 +103,9 @@ const ROTATOR_JS = `(function () {
       '--dsw-alias-bg-overlay': clamp(b + 0.62, 0.05, 0.98)
     };
     Object.keys(vals).forEach(function (k) {
-      document.documentElement.style.setProperty(k, 'rgba(' + rgb + ',' + vals[k].toFixed(2) + ')', 'important');
+      var v = 'rgba(' + rgb + ',' + vals[k].toFixed(2) + ')';
+      document.documentElement.style.setProperty(k, v, 'important');
+      document.body.style.setProperty(k, v, 'important');
     });
   }
 
@@ -143,7 +145,7 @@ const ROTATOR_JS = `(function () {
   loadSettings();
   tick();
   setInterval(function () { if (Date.now() >= nextFireAt) tick(); }, 1000);
-  setInterval(function () { loadSettings(); applyOpacity(); }, 5000);
+  setInterval(function () { loadSettings(); applyOpacity(); }, 2000);
 })();`
 
 export function apply(ctx) {
