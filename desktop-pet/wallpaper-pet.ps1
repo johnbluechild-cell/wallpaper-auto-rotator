@@ -73,15 +73,17 @@ $pet.FormBorderStyle = 'None'
 $pet.TopMost = $true
 $pet.ShowInTaskbar = $false
 $pet.StartPosition = 'Manual'
-$pet.Size = New-Object System.Drawing.Size(96, 96)
-$pet.Location = New-Object System.Drawing.Point(140, 140)
-$pet.BackColor = [System.Drawing.Color]::Magenta
-$pet.TransparencyKey = [System.Drawing.Color]::Magenta
+$pet.Size = New-Object System.Drawing.Size(92, 92)
+$pet.Location = New-Object System.Drawing.Point(120, 120)
+$pet.BackColor = [System.Drawing.Color]::FromArgb(255, 48, 48, 54)
+$path = New-Object System.Drawing.Drawing2D.GraphicsPath
+$path.AddEllipse(0, 0, 92, 92)
+$pet.Region = New-Object System.Drawing.Region($path)
 
 $emoji = New-Object System.Windows.Forms.Label
 $emoji.Text = [char]::ConvertFromUtf32(0x1F431)
 $emoji.Font = New-Object System.Drawing.Font('Segoe UI Emoji', 50)
-$emoji.BackColor = [System.Drawing.Color]::Magenta
+$emoji.BackColor = [System.Drawing.Color]::FromArgb(255, 48, 48, 54)
 $emoji.Size = New-Object System.Drawing.Size(84, 84)
 $emoji.Location = New-Object System.Drawing.Point(6, 4)
 $emoji.TextAlign = [System.Drawing.ContentAlignment]::MiddleCenter
