@@ -1,6 +1,6 @@
 MIT License
 
-Copyright (c) 2026 wallpaper-auto-rotator contributors
+Copyright (c) 2026 wallpaper-rotator-v2 contributors
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -19,3 +19,17 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+---
+
+Third-party notices:
+
+- dsh-wallpaper-engine-api (MIT, nishuoyang) — read-only Wallpaper Engine
+  library HTTP API, used as the wallpaper catalog source.
+  https://www.npmjs.com/package/dsh-wallpaper-engine-api
+- RePKG (MIT, NotScuffed) — Wallpaper Engine .pkg unpacker / .tex converter,
+  used offline to extract 4K source layers. Not bundled here; download from
+  https://github.com/notscuffed/repkg
+- Wallpaper Engine is a product of Kristjan Skutta. This project only reads
+  files the user already owns locally; it does not redistribute any wallpaper
+  or Steam Workshop content.

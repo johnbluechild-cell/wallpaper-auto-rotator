@@ -1,0 +1,30 @@
+{
+  "name": "wallpaper-rotator-v2",
+  "version": "2.2.0",
+  "private": true,
+  "type": "module",
+  "main": "index.js",
+  "exports": {
+    ".": "./index.js",
+    "./client": "./client.js",
+    "./package.json": "./package.json"
+  },
+  "description": "DSH 壁纸轮换：随机顺序、满屏不透明、应用内小控件；壁纸目录集成自 dsh-wallpaper-engine-api",
+  "dsh": {
+    "client": {
+      "platform": "web",
+      "immediately": true,
+      "inject": []
+    },
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  },
+  "files": [
+    "index.js",
+    "client.js",
+    "cordis.patch.yml",
+    "README.md"
+  ],
+  "license": "MIT"
+}

@@ -1,0 +1,4 @@
+# wallpaper-rotator-v2 的 profile 补丁层：把自己作为一条 insert 挂上去
+- insert:
+    - id: wallpaper-rotator-v2
+      name: wallpaper-rotator-v2
